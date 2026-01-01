@@ -15,7 +15,7 @@ fire_stations_df = gpd.read_file("Fire_Stations/Fire_Stations.shp")
 health_df = gpd.read_file("Health_Care_Facilities/Health_Care_Facilities_(Clinics%2C_Hospitals).shp")
 
 #Create streamlit title
-st.title("Cape Town Wards Map")
+st.title("Cape Town Municipal Facilities")
 
 option = st.selectbox(
     "Choose an option:",
