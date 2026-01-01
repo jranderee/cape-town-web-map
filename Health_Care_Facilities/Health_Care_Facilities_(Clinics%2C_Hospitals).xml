@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><MD_Metadata xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:xalan="http://xml.apache.org/xalan" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns="http://www.isotc211.org/2005/gmd">
     <fileIdentifier>
-        <gco:CharacterString>19684ea3f08b4c95ab4fe7099ed75e81</gco:CharacterString>
+        <gco:CharacterString>dfce37f79c7440799202f21e6d08c834</gco:CharacterString>
     </fileIdentifier>
     <characterSet>
         <MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8" codeSpace="ISOTC211/19115">utf8</MD_CharacterSetCode>
@@ -19,7 +19,7 @@
         </CI_ResponsibleParty>
     </contact>
     <dateStamp>
-        <gco:Date>2019-02-08</gco:Date>
+        <gco:Date>2019-02-07</gco:Date>
     </dateStamp>
     <metadataStandardName>
         <gco:CharacterString>ISO 19139 Geographic Information - Metadata - Implementation Specification</gco:CharacterString>
@@ -32,42 +32,36 @@
             <citation>
                 <CI_Citation>
                     <title>
-                        <gco:CharacterString>MyCiti Bus Stops</gco:CharacterString>
+                        <gco:CharacterString>Health Care Facilities</gco:CharacterString>
                     </title>
                     <date gco:nilReason="missing"/>
                 </CI_Citation>
             </citation>
             <abstract>
-                <gco:CharacterString>This dataset represents the locations of the Integrated Rapid Transit System (IRT) bus stops within the City of Cape Town.MyCiTi is a high-quality bus-based transit system that delivers fast, comfortable, and cost-effective urban mobility with segregated right-of-way infrastructure, rapid and frequent operations, and excellence in marketing and customer service.All spatial layers are served live from internal systems, an item's &amp;quot;Last Updated&amp;quot; or &amp;quot;Publish Date&amp;quot; refers to the Metadata only.</gco:CharacterString>
+                <gco:CharacterString>This dataset represents the locations of Hospitals and Clinics (primary health care facilities) within the City of Cape Town. It describes the facilities by class and type (Private or State). This dataset primarily represents data applicable to the City of Cape Town's Environmental Health Department and may not necessarily contain all Health Care Facilities or hospitals within the City of Cape Town. Date: 2018All spatial layers are served live from internal systems, an item's &amp;quot;Last Updated&amp;quot; or &amp;quot;Publish Date&amp;quot; refers to the Metadata only.</gco:CharacterString>
             </abstract>
             <purpose>
-                <gco:CharacterString>This dataset represents the locations of the IRT bus stops within the City of Cape Town.</gco:CharacterString>
+                <gco:CharacterString>The Health Care Facilities dataset represent the locations of the various classes of Clinics and hospitals within the City of Cape Town.</gco:CharacterString>
             </purpose>
             <credit>
-                <gco:CharacterString>TCT - Transport for Cape Town</gco:CharacterString>
+                <gco:CharacterString>GIS Spatial Data Management Section, Keller House, Loop Street, Cape Town and City Health- Specialised Health Services and Western Cape Government.</gco:CharacterString>
             </credit>
             <descriptiveKeywords>
                 <MD_Keywords>
                     <keyword>
-                        <gco:CharacterString>MyCiti Bus Stops</gco:CharacterString>
+                        <gco:CharacterString>Health Care Facilities</gco:CharacterString>
                     </keyword>
                     <keyword>
-                        <gco:CharacterString>IRT</gco:CharacterString>
+                        <gco:CharacterString>health</gco:CharacterString>
                     </keyword>
                     <keyword>
-                        <gco:CharacterString>Transportation</gco:CharacterString>
+                        <gco:CharacterString>clinic</gco:CharacterString>
                     </keyword>
                     <keyword>
-                        <gco:CharacterString>transport</gco:CharacterString>
+                        <gco:CharacterString>hospitals</gco:CharacterString>
                     </keyword>
                     <keyword>
-                        <gco:CharacterString>bus</gco:CharacterString>
-                    </keyword>
-                    <keyword>
-                        <gco:CharacterString>stops</gco:CharacterString>
-                    </keyword>
-                    <keyword>
-                        <gco:CharacterString>Integrated rapid transit</gco:CharacterString>
+                        <gco:CharacterString>specialised health</gco:CharacterString>
                     </keyword>
                 </MD_Keywords>
             </descriptiveKeywords>
@@ -123,7 +117,7 @@ Terms of Use
                     <onLine>
                         <CI_OnlineResource>
                             <linkage>
-                                <URL>https://citymaps.capetown.gov.za/agsext/rest/services/Theme_Based/ODP_SPLIT_6/FeatureServer/10</URL>
+                                <URL>https://citymaps.capetown.gov.za/agsext/rest/services/Theme_Based/ODP_SPLIT_2/FeatureServer/13</URL>
                             </linkage>
                         </CI_OnlineResource>
                     </onLine>

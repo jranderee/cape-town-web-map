@@ -11,25 +11,21 @@ gdf = gpd.read_file(shapefile_path)
 fire_stations_path = "Fire_Stations/Fire_Stations.shp"
 fire_statins_df = gpd.read_file(fire_stations_path)
 
-#read shapefile for fire stations
-train_stations_path = "Railway_Stations/Railway_Stations.shp"
-train_statins_df = gpd.read_file(train_stations_path)
-
-#Read shapefile for myciti bus stops
-myciti_bus_path = "myciti_bus_stops/Integrated_rapid_transit_(IRT)_system_MyCiTi_Bus_Stops.shp"
-myciti_df = gpd.read_file(myciti_bus_path)
+#Read shapefile for healthcare facilities
+health_facilities_path = "Health_Care_Facilities/Health_Care_Facilities_(Clinics%2C_Hospitals).shp"
+health_df = gpd.read_file(health_facilities_path)
 
 #Create streamlit title
 st.title("Cape Town Wards Map")
 
 option = st.selectbox(
     "Choose an option:",
-    ["None","Fire Stations", "Train Stations", "MyCiti Bus Stops"]
+    ["None","Fire Stations", "Healthcare Facilities"]
 )
 
 
 #Create folium map of cape town
-m = folium.Map(location=[-33.9249, 18.4241], zoom_start=10, tiles="CartoDB positron")
+m = folium.Map(location=[-33.9249, 18.4241], zoom_start=9, tiles="CartoDB positron")
 
 # Inject CSS to hide the Ukrainian flag
 m.get_root().html.add_child(folium.Element('<style> .leaflet-attribution-flag { display: none !important; } </style>'))
@@ -50,6 +46,9 @@ folium.GeoJson(
     )
 ).add_to(m)
 
+# Fit the map to the bounds of Cape Town
+m.fit_bounds([[-34.35834, 18.30722], [-33.471276, 19.005338]])
+
 match option:
     case "Fire Stations":
         #add fire stations to map
@@ -62,25 +61,15 @@ match option:
             )
         ).add_to(m)
 
-    case "Train Stations":
+    case "Healthcare Facilities":
         folium.GeoJson(
-            train_statins_df,
+            health_df,
             tooltip=folium.GeoJsonTooltip(
                 fields=["NAME"],
-                aliases=["Train Station Name:"],
+                aliases=["Facility Name:"],
                 localize=True
             )
             ).add_to(m)
-
-    case "MyCiti Bus Stops":
-        folium.GeoJson(
-            myciti_df,
-            tooltip=folium.GeoJsonTooltip(
-                fields=["STOP_NAME"],
-                aliases=["Bus Stop Name:"],
-                localize=True
-            )
-        ).add_to(m)
 
 
 #display map
