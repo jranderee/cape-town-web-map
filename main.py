@@ -2,18 +2,17 @@ import streamlit as st
 import geopandas as gpd
 import folium
 from streamlit_folium import st_folium
+import functions
+
 
 #read shapefile for ward boundaries
-shapefile_path = "Wards/Wards.shp"
-gdf = gpd.read_file(shapefile_path)
+gdf = gpd.read_file("Wards/Wards.shp")
 
 #read shapefile for fire stations
-fire_stations_path = "Fire_Stations/Fire_Stations.shp"
-fire_statins_df = gpd.read_file(fire_stations_path)
+fire_stations_df = gpd.read_file("Fire_Stations/Fire_Stations.shp")
 
 #Read shapefile for healthcare facilities
-health_facilities_path = "Health_Care_Facilities/Health_Care_Facilities_(Clinics%2C_Hospitals).shp"
-health_df = gpd.read_file(health_facilities_path)
+health_df = gpd.read_file("Health_Care_Facilities/Health_Care_Facilities_(Clinics%2C_Hospitals).shp")
 
 #Create streamlit title
 st.title("Cape Town Wards Map")
@@ -23,7 +22,6 @@ option = st.selectbox(
     ["None","Fire Stations", "Healthcare Facilities"]
 )
 
-
 #Create folium map of cape town
 m = folium.Map(location=[-33.9249, 18.4241], zoom_start=9, tiles="CartoDB positron")
 
@@ -31,20 +29,7 @@ m = folium.Map(location=[-33.9249, 18.4241], zoom_start=9, tiles="CartoDB positr
 m.get_root().html.add_child(folium.Element('<style> .leaflet-attribution-flag { display: none !important; } </style>'))
 
 #Add ward boundaries to map
-folium.GeoJson(
-    gdf,
-    style_function=lambda feature: {
-        "fillColor": "blue",
-        "color": "black",
-        "weight": 1,
-        "fillOpacity": 0.1
-    },
-    tooltip=folium.GeoJsonTooltip(
-        fields=["WARD_NAME"],
-        aliases=["Ward"],
-        localize=True
-    )
-).add_to(m)
+functions.ward(dataframe=gdf, fields_name="WARD_NAME", aliases="Ward", map=m)
 
 # Fit the map to the bounds of Cape Town
 m.fit_bounds([[-34.35834, 18.30722], [-33.471276, 19.005338]])
@@ -52,25 +37,12 @@ m.fit_bounds([[-34.35834, 18.30722], [-33.471276, 19.005338]])
 match option:
     case "Fire Stations":
         #add fire stations to map
-        folium.GeoJson(
-            fire_statins_df,
-            tooltip=folium.GeoJsonTooltip(
-                fields=["FIRE_STN_N"],
-                aliases=["Fire Station Name:"],
-                localize=True
-            )
-        ).add_to(m)
-
+        functions.facilities(dataframe=fire_stations_df, fields_name="FIRE_STN_N",
+                             aliases="Fire Station Name:", map=m)
     case "Healthcare Facilities":
-        folium.GeoJson(
-            health_df,
-            tooltip=folium.GeoJsonTooltip(
-                fields=["NAME"],
-                aliases=["Facility Name:"],
-                localize=True
-            )
-            ).add_to(m)
-
+        #add healthcare facilities to map
+        functions.facilities(dataframe=health_df,fields_name="NAME",
+                             aliases="Facility Name:",map=m)
 
 #display map
 st_folium(m,width=700, height=500)
