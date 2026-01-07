@@ -42,15 +42,15 @@ m.fit_bounds([[-34.35834, 18.30722], [-33.471276, 19.005338]])
 match option:
     case "Air pollution risk":
         #add air pollution risk to map
-        functions.areas(dataframe=apr2023_df, fields_name="Combined_2",
-                        aliases="Air pollution risk:", map=m)
+        functions.apr(dataframe=apr2023_df, fields_name="Combined_2",
+                      aliases="Air pollution risk:", map=m)
     case "Monitoring stations":
         #add monitoring stations to map
         functions.points(dataframe=ms_df, fields_name="Name",
                          aliases="Monitoring station:", map=m)
     case "SVI":
         # Add social vulnerability index to map
-        functions.areas(dataframe=svi_df, fields_name="SVI", aliases="Social vulnerability index: ", map=m)
+        functions.svi(dataframe=svi_df, fields_name="SVI", aliases="Social vulnerability index: ", map=m)
 
 #display map
 st_folium(m,width=700, height=500)
