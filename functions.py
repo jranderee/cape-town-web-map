@@ -23,7 +23,7 @@ def ward(dataframe, fields_name, aliases, map):
 
 
 def facilities(dataframe, fields_name, aliases, map):
-    """Loads city facilities onto map"""
+    """Loads data onto map"""
     def style_function(feature):
         """Creates custom marker for facility locations"""
         props = feature.get('properties')
