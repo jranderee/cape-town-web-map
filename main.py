@@ -20,7 +20,7 @@ ms_df = gpd.read_file("Web map data/Air pollution monitoring stations/CT_air_pol
 svi_df = gpd.read_file("Web map data/SVI/SVI_export.shp")
 
 #Create streamlit title
-st.title("Cape Town Municipal Facilities")
+st.title("Cape Town Air Pollution & Social Vulnerability Index")
 
 option = st.selectbox(
     "Choose an option:",
