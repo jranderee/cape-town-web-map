@@ -24,7 +24,7 @@ st.title("Cape Town Air Pollution & Social Vulnerability Index")
 
 option = st.selectbox(
     "Choose an option:",
-    ["None","Air pollution risk", "Monitoring stations", "SVI"]
+    ["None","Air pollution risk", "Monitoring stations", "Social vulnerability index"]
 )
 
 #Create folium map of cape town
@@ -48,7 +48,7 @@ match option:
         #add monitoring stations to map
         functions.points(dataframe=ms_df, fields_name="Name",
                          aliases="Monitoring station:", map=m)
-    case "SVI":
+    case "Social vulnerability index":
         # Add social vulnerability index to map
         functions.svi(dataframe=svi_df, fields_name="SVI", aliases="Social vulnerability index: ", map=m)
 

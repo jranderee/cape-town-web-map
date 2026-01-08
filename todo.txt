@@ -1,1 +1,1 @@
-add key for colours
+add legend for colours
