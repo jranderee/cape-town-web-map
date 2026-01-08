@@ -2,7 +2,7 @@ import folium
 
 
 
-def svi(dataframe, fields_name, aliases, map):
+def svi(dataframe, fields_name, data_alias, map, ward_column, ward_alias):
     """Loads social vulnerability index data onto map"""
 
     def style_function(feature):
@@ -51,8 +51,8 @@ def svi(dataframe, fields_name, aliases, map):
         dataframe,
         style_function=style_function,
         tooltip=folium.GeoJsonTooltip(
-            fields=[fields_name],
-            aliases=[aliases],
+            fields=[fields_name,ward_column],
+            aliases=[data_alias, ward_alias],
             localize=True
         ),
         zoom_on_click=True,

@@ -50,7 +50,8 @@ match option:
                          aliases="Monitoring station:", map=m)
     case "Social vulnerability index":
         # Add social vulnerability index to map
-        functions.svi(dataframe=svi_df, fields_name="SVI", aliases="Social vulnerability index: ", map=m)
+        functions.svi(dataframe=svi_df, fields_name="SVI",
+                      data_alias="Social vulnerability index: ", map=m, ward_column="WARD_NAME", ward_alias="Ward:")
 
 #display map
 st_folium(m,width=700, height=500)
