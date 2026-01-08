@@ -1,8 +1,7 @@
 import folium
 
 
-
-def svi(dataframe, fields_name, data_alias, map, ward_column, ward_alias):
+def social_vul_index(dataframe, data_name, data_alias, map, ward_column, ward_alias):
     """Loads social vulnerability index data onto map"""
 
     def style_function(feature):
@@ -10,7 +9,7 @@ def svi(dataframe, fields_name, data_alias, map, ward_column, ward_alias):
         props = feature['properties']
 
         # Get value from  column specified by fields_name
-        value = props.get(fields_name)
+        value = props.get(data_name)
 
         # Default to gray if value is missing or invalid
         if value is None or not isinstance(value, (int, float)):
@@ -42,8 +41,8 @@ def svi(dataframe, fields_name, data_alias, map, ward_column, ward_alias):
 
         return {
             'color': 'black',  # Boundary line color
-            'weight': 2,  # Line thickness
-            'opacity': 1,  # Line opacity
+            'weight': 0,  # Line thickness
+            'opacity': 0,  # Line opacity
             'fillColor': fill_color,  # Dynamic fill color based on the column
             'fillOpacity': 0.5  # Fill transparency
         }
@@ -51,7 +50,7 @@ def svi(dataframe, fields_name, data_alias, map, ward_column, ward_alias):
         dataframe,
         style_function=style_function,
         tooltip=folium.GeoJsonTooltip(
-            fields=[fields_name,ward_column],
+            fields=[data_name, ward_column],
             aliases=[data_alias, ward_alias],
             localize=True
         ),
@@ -59,7 +58,7 @@ def svi(dataframe, fields_name, data_alias, map, ward_column, ward_alias):
     ).add_to(map)
 
 
-def apr(dataframe, fields_name, aliases, map):
+def air_pollution_risk(dataframe, data_name, data_aliases, map):
     """Loads air pollution risk data onto map"""
 
     def style_function(feature):
@@ -67,38 +66,28 @@ def apr(dataframe, fields_name, aliases, map):
         props = feature['properties']
 
         # Get value from  column specified by fields_name
-        value = props.get(fields_name)
+        value = props.get(data_name)
 
 
 
         # Numerical color mapping: Scale from 1 (light color) to 10 (dark color)
         if value == "Very low":
-            fill_color = '#f0f921'
-        elif value == 2:
-            fill_color = '#fdca26'
+            fill_color = 'RGB(0, 128, 0)'
         elif value == "Low":
-            fill_color = '#fb9f3a'
-        elif value == 4:
-            fill_color = '#ed7953'
+            fill_color = 'RGB(144, 238, 144)'
         elif value == "Moderate":
-            fill_color = '#d8576b'
-        elif value == 6:
-            fill_color = '#bd3786'
+            fill_color = 'RGB(255, 255, 0)'
         elif value == "High":
-            fill_color = '#9c179e'
-        elif value == 8:
-            fill_color = '#7201a8'
-        elif value == 9:
-            fill_color = '#46039f'
+            fill_color = 'RGB(231, 84, 128)'
         elif value == "Very high":
-            fill_color = '#0d0887'
+            fill_color = 'RGB(128, 0, 128)'
         else:
             fill_color = 'gray'
 
         return {
             'color': 'black',  # Boundary line color
-            'weight': 2,  # Line thickness
-            'opacity': 1,  # Line opacity
+            'weight': 0,  # Line thickness
+            'opacity': 0,  # Line opacity
             'fillColor': fill_color,  # Dynamic fill color based on the column
             'fillOpacity': 0.5  # Fill transparency
         }
@@ -106,13 +95,12 @@ def apr(dataframe, fields_name, aliases, map):
         dataframe,
         style_function=style_function,
         tooltip=folium.GeoJsonTooltip(
-            fields=[fields_name],
-            aliases=[aliases],
+            fields=[data_name],
+            aliases=[data_aliases],
             localize=True
         ),
         zoom_on_click=True,
     ).add_to(map)
-
 
 
 def points(dataframe, fields_name, aliases, map):
