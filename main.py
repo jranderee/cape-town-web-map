@@ -75,5 +75,6 @@ match option:
         functions.social_vul_index(dataframe=svi_df, data_name="SVI",
                                    data_alias="Social vulnerability index: ", map=m, ward_column="WARD_NAME", ward_alias="Ward:")
 
+
 #display map
-st_folium(m,width=700, height=500)
+st_folium(m, width=700, height=500)
